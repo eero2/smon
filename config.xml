@@ -1,5 +1,4 @@
 
-
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns = "http://www.w3.org/ns/widgets"
 xmlns:gap = "http://phonegap.com/ns/1.0"
@@ -19,7 +18,7 @@ versionCode = "1">
         
     <!-- ICONS -->
         
-    <icon src="wired-icon72.png" /> <!-- default 72 pixels -->
+    <icon src="http://dpprojekt.ee/smon/wired-icon72.png" /> <!-- default 72 pixels -->
  
         
     <!-- SPLASH SCREENS -->
@@ -62,7 +61,7 @@ versionCode = "1">
     <!--<preference name="permissions" value="none"/>-->
 	
   <feature name="http://api.phonegap.com/1.0/file"/>
-  <feature name="http://api.phonegap.com/1.0/geolocation"/>
+  <!--<feature name="http://api.phonegap.com/1.0/geolocation"/>-->
   <feature name="http://api.phonegap.com/1.0/network"/>
   
   <access origin="*" />
