@@ -17,7 +17,7 @@ versionCode = "1">
         
     <!-- ICONS -->
         
-    <icon src="icon.png" /> <!-- default 72 pixels -->
+   <!--<icon src="icon.png" /> <!-- default 72 pixels -->
  
         
     <!-- SPLASH SCREENS -->
