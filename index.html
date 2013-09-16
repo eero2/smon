@@ -6,40 +6,56 @@
     <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
 
-    // Wait for device API libraries to load
+    var watchID = null;
+    // Wait for Cordova to load
     //
     document.addEventListener("deviceready", onDeviceReady, false);
 
-    // device APIs are available
+    // Cordova is ready
     //
     function onDeviceReady() {
-        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        navigator.alert('Cordova is ready');
     }
 
+    function getCurrentPosition() {
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    }
+        
+    function watchPosition() {
+        // Update every 3 seconds
+        var options = { frequency: 3000, timeout: 5000, enableHighAccuracy: true  };
+		//{ maximumAge: 3000, timeout: 5000, enableHighAccuracy: true };
+
+        watchID = navigator.geolocation.watchPosition(onSuccess, onError, options);
+    }
     // onSuccess Geolocation
     //
     function onSuccess(position) {
         var element = document.getElementById('geolocation');
-        element.innerHTML = 'Latitude: '          + position.coords.latitude         + '<br />' +
-                            'Longitude: '         + position.coords.longitude        + '<br />' +
-                            'Altitude: '          + position.coords.altitude         + '<br />' +
-                            'Accuracy: '          + position.coords.accuracy         + '<br />' +
+        element.innerHTML = 'Latitude: ' + position.coords.latitude + '<br />' +
+                            'Longitude: ' + position.coords.longitude + '<br />' +
+                            'Altitude: ' + position.coords.altitude + '<br />' +
+                            'Accuracy: ' + position.coords.accuracy + '<br />' +
                             'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '<br />' +
-                            'Heading: '           + position.coords.heading          + '<br />' +
-                            'Speed: '             + position.coords.speed            + '<br />' +
-                            'Timestamp: '         + position.timestamp               + '<br />';
+                            'Heading: ' + position.coords.heading + '<br />' +
+                            'Speed: ' + position.coords.speed + '<br />' +
+                            'Timestamp: ' + new Date(position.timestamp) + '<br />';
     }
 
-        // onError Callback receives a PositionError object
-        //
-        function onError(error) {
-            alert('code: '    + error.code    + '\n' +
-                  'message: ' + error.message + '\n');
-        }
+    // onError Callback receives a PositionError object
+    //
+    function onError(error) {
+        alert('code: ' + error.code + '\n' +
+              'message: ' + error.message + '\n');
+    }
 
     </script>
   </head>
-  <body>
-    <p id="geolocation">Finding geolocation...</p>
-  </body>
+<body>
+    <p id="geolocation">Waiting for location...</p>
+<button id="btnGetCurrentPosition" style="width:80%" onclick="getCurrentPosition();">Get Current Position</button> 
+<p>&nbsp;</p>
+<button id="btnWatchPosition" style="width:80%" onclick="watchPosition();">Watch Position</button> 
+    <br>
+</body>
 </html>
