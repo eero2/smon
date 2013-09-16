@@ -5,10 +5,10 @@ id = "com.eero.*"
 version = "1.0.0"
 versionCode = "1">
 
-    <name>CCCR</name>
+    <name>GeoLoc</name>
 
     <description>
-        Competence Centre for Cancer Research
+        Geolocation test
     </description>
 
     <author href="http://eero.planet.ee" email="itim123@gmail.com">
