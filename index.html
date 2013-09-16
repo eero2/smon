@@ -1,24 +1,45 @@
 <!DOCTYPE html>
+<html>
+  <head>
+    <title>Device Properties Example</title>
 
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>CCCR</title>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <script type="text/javascript" charset="utf-8">
 
-<meta name="viewport" content="user-scalable=no, initial-scale=1.0" />
-    
+    // Wait for device API libraries to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
 
-    <title>CCCR</title>
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    }
+
+    // onSuccess Geolocation
+    //
+    function onSuccess(position) {
+        var element = document.getElementById('geolocation');
+        element.innerHTML = 'Latitude: '          + position.coords.latitude         + '<br />' +
+                            'Longitude: '         + position.coords.longitude        + '<br />' +
+                            'Altitude: '          + position.coords.altitude         + '<br />' +
+                            'Accuracy: '          + position.coords.accuracy         + '<br />' +
+                            'Altitude Accuracy: ' + position.coords.altitudeAccuracy + '<br />' +
+                            'Heading: '           + position.coords.heading          + '<br />' +
+                            'Speed: '             + position.coords.speed            + '<br />' +
+                            'Timestamp: '         + position.timestamp               + '<br />';
+    }
+
+        // onError Callback receives a PositionError object
+        //
+        function onError(error) {
+            alert('code: '    + error.code    + '\n' +
+                  'message: ' + error.message + '\n');
+        }
+
+    </script>
   </head>
-
   <body>
-  
-  <script type="text/javascript">
-   
-  var sURL="http://eero.planet.ee/cccr";
-  window.location.replace( sURL );
-
-</script>
-  
-  
+    <p id="geolocation">Finding geolocation...</p>
   </body>
 </html>
